@@ -7,7 +7,6 @@ import os
 fileName = "users.txt"
 window = tk.Tk()
 frame = tk.Frame(window)
-frame = tk.Frame(window)
 frame.grid(row=0, column=0, sticky='ew')
 window.grid_columnconfigure(0,weight=1)
 

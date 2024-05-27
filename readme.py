@@ -3,7 +3,8 @@ from random import randrange
 from tkinter import messagebox
 import tkinter as tk
 import os
-
+from collections import Counter
+import pdb
 
 currentPokemonIndex = str(randrange(500) + 1)
 image_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + str(currentPokemonIndex) + ".png"
@@ -91,7 +92,27 @@ def clearWindow(window, tasksList, fileName):
     file.writelines(content)
     file.close()
     window.destroy()
+
+def count_pokemons(directory):
+    pokemonCounter = Counter()
+
+    # Przejdź przez wszystkie podfoldery i pliki w folderze users
+    for subdir, _, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.txt'):
+                file_path = os.path.join(subdir, file)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        pokemon = line.strip()
+                        if pokemon:
+                            pokemonCounter[pokemon] += 1
+    pdb.set_trace()
+    # podium = pokemonCounter[:3]
+    # for element in podium:
+    #     podiumText = podiumText + "" +str(element)
     
+    
+    #messagebox.showwarning(title="siema", message=pokemonCounter, icon=None)
 
 
 

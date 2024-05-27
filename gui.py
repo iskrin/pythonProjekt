@@ -108,6 +108,26 @@ def startPokemon(window):
         height=43.0
     )
 
+    button_image_5 = PhotoImage(
+        file=relative_to_assets("button_5.png"))
+
+    button_5 = Button(
+        image=button_image_5,
+        borderwidth=0,
+        highlightthickness=0,
+        command=lambda: r.showFavourites(r.favouritesList),
+        relief="flat"
+    )
+
+    button_5.place(
+        x=438.0,
+        y=360.0,
+        width=43.0,
+        height=43.0
+    )
+
+
+
     pokemonImage = projekt.display_image_from_url(r.image_url)
     image_1 = canvas.create_image(
         int(canvas['width']) / 2,
