@@ -115,7 +115,7 @@ def startPokemon(window):
         image=button_image_5,
         borderwidth=0,
         highlightthickness=0,
-        command=lambda: r.showFavourites(r.favouritesList),
+        command=lambda: r.showRanking("users"),
         relief="flat"
     )
 

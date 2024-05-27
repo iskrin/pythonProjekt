@@ -4,7 +4,7 @@ from tkinter import messagebox
 import tkinter as tk
 import os
 from collections import Counter
-import pdb
+
 
 currentPokemonIndex = str(randrange(500) + 1)
 image_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + str(currentPokemonIndex) + ".png"
@@ -93,7 +93,7 @@ def clearWindow(window, tasksList, fileName):
     file.close()
     window.destroy()
 
-def count_pokemons(directory):
+def showRanking(directory):
     pokemonCounter = Counter()
 
     # Przejdź przez wszystkie podfoldery i pliki w folderze users
@@ -106,13 +106,13 @@ def count_pokemons(directory):
                         pokemon = line.strip()
                         if pokemon:
                             pokemonCounter[pokemon] += 1
-    pdb.set_trace()
-    # podium = pokemonCounter[:3]
-    # for element in podium:
-    #     podiumText = podiumText + "" +str(element)
     
+    rankingText = ""
+    pokemonCounterSorted = dict(sorted(pokemonCounter.items(), key=lambda item: item[1], reverse=True))
+    for key, value in pokemonCounterSorted.items():
+         rankingText = rankingText + f" {key}:" + f" {value}\n"
     
-    #messagebox.showwarning(title="siema", message=pokemonCounter, icon=None)
+    messagebox.showwarning(title="Ranking", message= rankingText, icon=None)
 
 
 
